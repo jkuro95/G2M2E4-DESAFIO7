@@ -1,5 +1,5 @@
 from db.user_db import get_user
-from db.products_db import ProductInDB, get_all_products, get_single_product
+from db.products_db import ProductInDB, get_all_products, get_single_product, create_product
 
 from models.user_models import UserIn, UserOut
 from models.product_models import Product
@@ -45,14 +45,6 @@ async def read_product(product_id: int):
     return product_in_db
 
 # New Product Route
-# no sirve xd
-# @app.post("/productos")
-# async def add_product(product: ProductInDB):
-#     # print(type(product))
-#     # print(product)
-
-#     # print(type(ProductInDB(product)))
-#     return add_product(product)
-#     # product_added_to_db = add_product(ProductInDB(product))
-#     # return product_added_to_db
-    
+@app.post("/productos")
+async def add_product(product: ProductInDB):
+    return create_product(product)

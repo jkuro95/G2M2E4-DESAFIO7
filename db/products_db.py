@@ -31,8 +31,7 @@ def get_single_product(product_id: str):
     else:
         return None
 
-# no sirve xd
-# def add_product(product: ProductInDB):
-#     new_idx = random()
-#     database_products[str(new_idx)] = product
-#     return database_products[str(new_idx)]
+def create_product(product: ProductInDB):
+    new_idx = random()
+    database_products[str(new_idx)] = product
+    return database_products[str(new_idx)]
