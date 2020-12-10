@@ -2,7 +2,7 @@ from db.user_db import get_user
 from db.products_db import ProductInDB, get_all_products, get_single_product, create_product
 
 from models.user_models import UserIn, UserOut
-from models.product_models import Product
+from models.product_models import ProductSchema
 
 # import datetime
 from fastapi import FastAPI, HTTPException
@@ -46,5 +46,8 @@ async def read_product(product_id: int):
 
 # New Product Route
 @app.post("/productos")
+# async def add_product(product: ProductSchema):
 async def add_product(product: ProductInDB):
-    return create_product(product)
+    # product_added_to_db = create_product(ProductInDB(product))
+    product_added_to_db = create_product(product)
+    return product_added_to_db
