@@ -34,13 +34,10 @@ def get_single_product(product_id: str):
 
 def create_product(product_in_db: ProductInDB):
     new_idx = len(database_products) + 1
-    database_products[str(new_idx)] = product
+    database_products[str(new_idx)] = product_in_db
     return database_products[str(new_idx)]
 
 def change_product(product_in_db: ProductInDB, product_id: str):
-
     temp_product = {product_id : product_in_db}
-
     database_products.update(temp_product)
-
     return database_products[product_id]
