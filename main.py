@@ -74,12 +74,9 @@ async def add_cant(product_add_cant_in: ProductAddCantIn):
         raise HTTPException(status_code=404, detail="El producto no existe")
 
     product_in_db.cantidad = product_in_db.cantidad + product_add_cant_in.cantidad
-
     product_change_to_db = change_product(product_in_db, product_add_cant_in.product_id)
-
     product_add_cant_out = ProductAddCantOut(**{"nombre": product_change_to_db.nombre,
                                                 "cantidad": product_change_to_db.cantidad})
-
     return product_add_cant_out
 
 
