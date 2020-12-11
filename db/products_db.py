@@ -10,16 +10,19 @@ class ProductInDB(BaseModel):
     nombre: str
     descripcion: str
     precio: float
+    costo: float
 
 database_products = Dict[str, ProductInDB]
 
 database_products = {
     "1": ProductInDB(**{"nombre": "laptop",
                         "descripcion": "lenovo thinkpad x1 carbon 6th generation",
-                        "precio": 1300.99}),
+                        "precio": 1299.99,
+                        "costo": 900}),
     "2": ProductInDB(**{"nombre": "teclado",
                         "descripcion": "Corsair K68 RGB Gaming Keyboard",
-                        "precio": 150}),
+                        "precio": 150,
+                        "costo": 70}),
 }
 
 def get_all_products():
@@ -31,7 +34,8 @@ def get_single_product(product_id: str):
     else:
         return None
 
-def create_product(product: ProductInDB):
-    new_idx = random()
+def create_product(product_in_db: ProductInDB):
+    #new_idx = random()                      #no deberia se random pues puede sobreescribir un producto
+    new_idx = len(database_products) + 1
     database_products[str(new_idx)] = product
     return database_products[str(new_idx)]
