@@ -33,7 +33,6 @@ def get_single_product(product_id: str):
         return None
 
 def create_product(product_in_db: ProductInDB):
-    #new_idx = random()                      #no deberia se random pues puede sobreescribir un producto
     new_idx = len(database_products) + 1
     database_products[str(new_idx)] = product
     return database_products[str(new_idx)]

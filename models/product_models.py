@@ -5,6 +5,8 @@ class ProductOut(BaseModel):
     nombre: str
     descripcion: str
     precio: float
+    costo: float
+    cantidad: int
 
 class ProductAddCantIn(BaseModel):
     product_id: str
