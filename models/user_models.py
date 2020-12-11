@@ -6,3 +6,5 @@ class UserIn(BaseModel):
 
 class UserOut(BaseModel):
     username: str
+    usertype: str
+    cedula: int
