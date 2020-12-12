@@ -2,7 +2,7 @@ from db.user_db import get_user, get_all_users
 from db.products_db import ProductInDB, get_all_products, get_single_product, create_product, change_product
 
 from models.user_models import UserIn, UserOut
-from models.product_models import ProductOut, ProductAddCantIn, ProductAddCantOut
+from models.product_models import AllProductOut, ProductAddCantIn, ProductAddCantOut, AddProductIn, AddProductOut
 
 # import datetime
 from fastapi import FastAPI, HTTPException
@@ -44,7 +44,7 @@ async def read_products():
     products_in_db = get_all_products()
     products_out = []
     for prod in products_in_db:
-        product_out = ProductOut(**prod.dict())     
+        product_out = AllProductOut(**prod.dict())     
         products_out.append(product_out)   
     return products_out
     
@@ -60,9 +60,12 @@ async def read_product(product_id: int):
 
 # New Product Route
 @api.post("/productos")
-async def add_product(product: ProductInDB):
+async def add_product(product: AddProductIn):
     product_added_to_db = create_product(product)
-    return product_added_to_db
+    Add_Product_Out = AddProductOut(**{"nombre":product_added_to_db.nombre,
+                                        "cantidad": product_added_to_db.cantidad,
+                                        "mensaje" : "Producto agregado correctamente"})
+    return Add_Product_Out
 
 # aumentar la cantidad del producto
 @api.put("/productos/{product_id}")

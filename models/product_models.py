@@ -1,9 +1,21 @@
 from pydantic import BaseModel
 
-
-class ProductOut(BaseModel):
+class AddProductIn(BaseModel):
     nombre: str
     descripcion: str
+    precio: float
+    costo: float
+    cantidad: int
+
+class AddProductOut(BaseModel):
+    nombre: str
+    cantidad: int
+    mensaje: str
+    
+class AllProductOut(BaseModel):
+    product_id: int
+    nombre: str
+    cantidad: int
     precio: float
 
 class ProductAddCantIn(BaseModel):
