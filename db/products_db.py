@@ -47,12 +47,9 @@ def create_product(Add_Product_In: AddProductIn):
                                     "costo": Add_Product_In.costo,
                                     "cantidad": Add_Product_In.cantidad})
     database_products[str(new_idx)] = product_in_db
-
-
     return database_products[str(new_idx)]
 
 def change_product(product_in_db: ProductInDB, product_id: str):
-
     temp_product = {product_id : product_in_db}
     database_products.update(temp_product)
     return database_products[product_id]
